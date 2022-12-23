@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace swr_project.controllers
+namespace swr_project.Models
 {
-    internal class Class1
+    public class Person
     {
     }
 }
