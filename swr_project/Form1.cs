@@ -18,12 +18,6 @@ namespace swr_project
 
         }
 
-        private  void button1_Click(object sender, EventArgs e)
-        {
-            DB_helpers db = new DB_helpers();
-            
-            db.addNewInvoice(new Invoice { invoiceNumber = "123" });
-
-        }
+        
     }
 }
