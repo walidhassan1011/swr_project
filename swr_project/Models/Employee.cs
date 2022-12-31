@@ -8,5 +8,7 @@ namespace swr_project.Models
 {
     public class Employee:Person
     {
+        
+        
     }
 }
