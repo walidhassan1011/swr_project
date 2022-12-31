@@ -14,7 +14,7 @@ namespace swr_project.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
-        public string invoiceNumber { get; set; }
+       
        
         
     }
