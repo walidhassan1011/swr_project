@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace swr_project
 {
-    public partial class Order : Form
+    public partial class AddOrder : Form
     {
-        public Order()
+        public AddOrder()
         {
             InitializeComponent();
         }
