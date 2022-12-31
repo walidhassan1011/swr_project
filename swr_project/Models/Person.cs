@@ -25,11 +25,11 @@ namespace swr_project.Models
         public string Email { get; set; }
         public DateTime created { get; set; }
         public string type { get; set; }
-
         public string gender { get; set; }
-        public Person( string firstName, string lastName, string adress, int phoneNumber, string Email,string type)
+        public string password { get; set; }
+        public Person(string firstName, string lastName, string adress, int phoneNumber, string Email, string type, string password)
         {
-          
+
             this.firstName = firstName;
             this.lastName = lastName;
             this.fullName = firstName + lastName;
@@ -37,6 +37,9 @@ namespace swr_project.Models
             this.phoneNumber = phoneNumber;
             this.Email = Email;
             this.type = type;
+            this.password = password;
         }
+
+
     }
 }
