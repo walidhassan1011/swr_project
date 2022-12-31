@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="orderAdd.cs" />
+    <Compile Remove="orderAdd.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="orderAdd.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="view\" />
   </ItemGroup>
 
