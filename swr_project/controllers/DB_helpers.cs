@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
 using System;
-
+using BCrypt.Net;
 using swr_project.Models;
 
 namespace swr_project.controllers
@@ -11,11 +11,11 @@ namespace swr_project.controllers
         private const string connectionString = "mongodb+srv://walid:walidhassan1011@cluster0.b9m9hni.mongodb.net/?retryWrites=true&w=majority";
         private const string dbName = "swr_project";
         private const string invoicesCollection = "invoices";
-        private const string customersCollection = "customers";
-        private const string carCollection = "cars";
-        private const string bikeCollection = "bikes";
-        private const string employeeCollection = "employees";
-        private const string adminCollection = "admins";
+        private const string usersCollection = "users";
+        private const string VehiclesCollection = "Vehicles";
+        private const string OrdersCollection = "orders";
+
+
 
         private IMongoCollection<T>ConnectMongo<T>(in string collection)
         {
@@ -26,20 +26,218 @@ namespace swr_project.controllers
             
         }
         // invoices
-        public void addNewInvoice(Invoice invoice)
+        public void AddNewInvoice(Invoice invoice)
         {
-            var collection = ConnectMongo<Invoice>(invoicesCollection);
-            collection.InsertOneAsync(invoice);
+            try
+            {
+                var collection = ConnectMongo<Invoice>(invoicesCollection);
+                collection.InsertOneAsync(invoice);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-        // user
+        public void UpdateInvoice(Invoice invoice)
+        {
+            try
+            {
+                var collection = ConnectMongo<Invoice>(invoicesCollection);
+                var filter = Builders<Invoice>.Filter.Eq("_id", invoice._id);
+                collection.ReplaceOneAsync(filter, invoice, new ReplaceOptions { IsUpsert = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+                
+        }
 
-        // car
-        // bike
-        // customers
-        // order
-        // admin
-        // employee 
+        public void DeleteInvoice(Invoice invoice)
+        {
+            try {
+                var collection = ConnectMongo<Invoice>(invoicesCollection);
+                var filter = Builders<Invoice>.Filter.Eq("_id", invoice._id);
+                collection.DeleteOneAsync(filter);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("something wrong");
+            }
+        }
 
+        
+        // Customer
+        public async void  AddNewUser(Person user)
+        {
+            try
+            {
 
+                
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                user.Password = hashedPassword;
+               
+                var collection = ConnectMongo<Person>(usersCollection);
+                await collection.InsertOneAsync(user);
+               
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            
+        
     }
-}
+        }
+
+        public void UpdateUser(Person oldUser,Person newUser)
+        {
+            try
+            {
+                
+                var collection = ConnectMongo<Person>(usersCollection);
+                var filter = Builders<Person>.Filter.Eq("_id", oldUser._id);
+                collection.ReplaceOneAsync(filter, newUser, new ReplaceOptions { IsUpsert = true });
+            }
+            catch (Exception ex)
+            {
+                    
+            }
+        }
+        public Person FindUser(string name,string Password)
+        {
+
+
+            var collection = ConnectMongo<Person>(usersCollection);
+            var filter = Builders<Person>.Filter.Eq("name", name);
+            var user= collection.Find(filter).FirstOrDefault();
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+
+            if (BCrypt.Net.BCrypt.Verify(Password, user.Password))
+            {
+                return user;
+            }
+            else
+            {
+                return null;
+            }
+            }
+            
+            
+        }
+        public void DeleteUser(Person user)
+        {
+            try
+            {
+                var collection = ConnectMongo<Person>(usersCollection);
+                
+               if (collection.DeleteOneAsync(c => c._id == user._id).Result.DeletedCount == 1)
+                {
+                    MessageBox.Show("deleted");
+                }
+                else
+                {
+                    MessageBox.Show("not found");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        
+    
+        }
+        
+
+        
+        // car
+
+            public void AddNewVehicle(Vehicles vehicle)
+        {
+            try
+            {
+                var collection = ConnectMongo<Vehicles>(VehiclesCollection);
+                collection.InsertOneAsync(vehicle);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            
+            }
+
+        public Task UpdateVehicle(Vehicles oldvVehicle)
+        {
+            try
+            {
+                var collection = ConnectMongo<Vehicles>(VehiclesCollection);
+                var filter = Builders<Vehicles>.Filter.Eq("_id", oldvVehicle._id);
+                return collection.ReplaceOneAsync(filter, oldvVehicle, new ReplaceOptions { IsUpsert = true });
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+
+
+            }
+
+        public void DeleteVehicle(Vehicles vehicle)
+        {
+            try
+            {
+                var collection = ConnectMongo<Vehicles>(VehiclesCollection);
+                var filter = Builders<Vehicles>.Filter.Eq("_id", vehicle._id);
+                collection.DeleteOneAsync(filter);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+
+
+        }
+
+
+
+
+
+        // order
+
+        public Task AddNewOrder(Order order)
+        {
+            try
+            {
+                var collection = ConnectMongo<Order>(OrdersCollection);
+               return  collection.InsertOneAsync(order);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public Task UpdateOrder(Order oldOrder)
+        {
+            try
+            {
+                var collection = ConnectMongo<Order>(OrdersCollection);
+                var filter = Builders<Order>.Filter.Eq("_id", oldOrder._id);
+                return collection.ReplaceOneAsync(filter, oldOrder, new ReplaceOptions { IsUpsert = true });
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+
+        }
+        }
+    }
