@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace swr_project.Models
 {
-   public class Car:Vehicles
+   public class Car : Vehicles
     {
+        
     }
 }
