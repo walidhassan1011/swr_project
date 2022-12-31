@@ -16,5 +16,10 @@ namespace swr_project
         {
             InitializeComponent();
         }
+
+        private void orderAdd_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
