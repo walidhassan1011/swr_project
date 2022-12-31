@@ -1,6 +1,6 @@
 ﻿namespace swr_project
 {
-    partial class Order
+    partial class AddOrder
     {
         /// <summary>
         /// Required designer variable.

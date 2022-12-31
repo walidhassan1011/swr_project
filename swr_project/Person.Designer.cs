@@ -187,7 +187,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 37);
             this.button3.TabIndex = 20;
-            this.button3.Text = "ccccccc";
+            this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
@@ -232,7 +232,7 @@
             this.radioButton2.Text = "radioButton2";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // Form7
+            // Person
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -256,7 +256,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form7";
+            this.Name = "Person";
             this.Text = "Form7";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
