@@ -194,16 +194,16 @@ namespace swr_project.controllers
 
         }
 
-            public void AddNewVehicle(Vehicles vehicle)
+            public Task AddNewVehicle(Vehicles vehicle)
         {
             try
             {
                 var collection = ConnectMongo<Vehicles>(VehiclesCollection);
-                collection.InsertOneAsync(vehicle);
+                return collection.InsertOneAsync(vehicle);
             }
             catch (Exception ex)
             {
-                
+                return null;
             }
             
             }

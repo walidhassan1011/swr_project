@@ -10,22 +10,23 @@ namespace swr_project.Models
    public class Car : Vehicles
     {
         DB_helpers db = new DB_helpers();
-        public Car(string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber)
-           : base(fuelType, model, brand, year, chasis_Number, price, engine_Number, serialNumber)
+        public Car(string fuelType, string model, string brand, string type, double price, string engine_Number, string serialNumber)
+           : base(fuelType, model, brand, type,price, engine_Number, serialNumber)
         {
 
         }
-        public void addNewCar(Vehicles vehicle)
+        public Task addNewCar(Car newCar)
         {
-            db.AddNewVehicle(vehicle);
+            
+            return db.AddNewVehicle(newCar);
         }
-        public void editCar(Vehicles vehicleOld,Vehicles vehicleNew)
+        public void editCar(Car vehicleOld,Car vehicleNew)
         {
             db.UpdateVehicle(vehicleOld);//We need to modify the method in the database to take the new vehicle too.
         }
-        public void removeCar(Vehicles vehicle)
+        public void removeCar(Car car)
         {
-            db.DeleteVehicle(vehicle);
+            db.DeleteVehicle(car);
         }
         public List<Vehicles> viewAllCars()
         {

@@ -33,16 +33,18 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Model = new System.Windows.Forms.TextBox();
+            this.Brand = new System.Windows.Forms.TextBox();
+            this.SerialNumber = new System.Windows.Forms.TextBox();
+            this.Type = new System.Windows.Forms.TextBox();
+            this.Price = new System.Windows.Forms.TextBox();
+            this.EngineNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FuelType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,6 +84,7 @@
             this.button2.TabIndex = 52;
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label6
             // 
@@ -104,47 +107,47 @@
             this.label5.Text = "Price";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // textBox7
+            // Model
             // 
-            this.textBox7.Location = new System.Drawing.Point(174, 25);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(125, 27);
-            this.textBox7.TabIndex = 49;
+            this.Model.Location = new System.Drawing.Point(174, 25);
+            this.Model.Name = "Model";
+            this.Model.Size = new System.Drawing.Size(125, 27);
+            this.Model.TabIndex = 49;
             // 
-            // textBox6
+            // Brand
             // 
-            this.textBox6.Location = new System.Drawing.Point(174, 74);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(125, 27);
-            this.textBox6.TabIndex = 48;
+            this.Brand.Location = new System.Drawing.Point(174, 86);
+            this.Brand.Name = "Brand";
+            this.Brand.Size = new System.Drawing.Size(125, 27);
+            this.Brand.TabIndex = 48;
             // 
-            // textBox5
+            // SerialNumber
             // 
-            this.textBox5.Location = new System.Drawing.Point(174, 140);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(125, 27);
-            this.textBox5.TabIndex = 47;
+            this.SerialNumber.Location = new System.Drawing.Point(174, 140);
+            this.SerialNumber.Name = "SerialNumber";
+            this.SerialNumber.Size = new System.Drawing.Size(125, 27);
+            this.SerialNumber.TabIndex = 47;
             // 
-            // textBox4
+            // Type
             // 
-            this.textBox4.Location = new System.Drawing.Point(174, 200);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 27);
-            this.textBox4.TabIndex = 46;
+            this.Type.Location = new System.Drawing.Point(174, 200);
+            this.Type.Name = "Type";
+            this.Type.Size = new System.Drawing.Size(125, 27);
+            this.Type.TabIndex = 46;
             // 
-            // textBox3
+            // Price
             // 
-            this.textBox3.Location = new System.Drawing.Point(174, 262);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 27);
-            this.textBox3.TabIndex = 45;
+            this.Price.Location = new System.Drawing.Point(174, 262);
+            this.Price.Name = "Price";
+            this.Price.Size = new System.Drawing.Size(125, 27);
+            this.Price.TabIndex = 45;
             // 
-            // textBox1
+            // EngineNumber
             // 
-            this.textBox1.Location = new System.Drawing.Point(174, 332);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 44;
+            this.EngineNumber.Location = new System.Drawing.Point(174, 332);
+            this.EngineNumber.Name = "EngineNumber";
+            this.EngineNumber.Size = new System.Drawing.Size(125, 27);
+            this.EngineNumber.TabIndex = 44;
             // 
             // label4
             // 
@@ -170,7 +173,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(31, 74);
+            this.label2.Location = new System.Drawing.Point(31, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 20);
             this.label2.TabIndex = 41;
@@ -186,23 +189,42 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "Type";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(174, 394);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 27);
+            this.textBox1.TabIndex = 55;
+            // 
+            // FuelType
+            // 
+            this.FuelType.AutoSize = true;
+            this.FuelType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FuelType.Location = new System.Drawing.Point(31, 401);
+            this.FuelType.Name = "FuelType";
+            this.FuelType.Size = new System.Drawing.Size(71, 20);
+            this.FuelType.TabIndex = 56;
+            this.FuelType.Text = "Fuel Type";
+            // 
             // VehiclesAdding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.FuelType);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Model);
+            this.Controls.Add(this.Brand);
+            this.Controls.Add(this.SerialNumber);
+            this.Controls.Add(this.Type);
+            this.Controls.Add(this.Price);
+            this.Controls.Add(this.EngineNumber);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -222,15 +244,17 @@
         private Button button2;
         private Label label6;
         private Label label5;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox1;
+        private TextBox Model;
+        private TextBox Brand;
+        private TextBox SerialNumber;
+        private TextBox Type;
+        private TextBox Price;
+        private TextBox EngineNumber;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;
+        private TextBox textBox1;
+        private Label FuelType;
     }
 }

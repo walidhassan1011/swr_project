@@ -16,18 +16,20 @@ namespace swr_project.Models
         public string fuelType { get; set; }
         public string Model { get; set; }
         public string brand { get; set; }
-        public string year { get; set; }
-        public string chasis_Number { get; set; }
+       
+       
+
+        public string Type { get; set; }
         public double price { get; set; }
         public string Engine_Number { get; set; }
         public string serialNumber { get; set; }
-        public Vehicles(string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber)
+        public Vehicles(string fuelType, string model, string brand, string type, double price, string engine_Number, string serialNumber)
         {
             this.fuelType = fuelType;
             Model = model;
             this.brand = brand;
-            this.year = year;
-            this.chasis_Number = chasis_Number;
+            this.Type = type;
+           
             this.price = price;
             Engine_Number = engine_Number;
             this.serialNumber = serialNumber;

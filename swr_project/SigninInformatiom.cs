@@ -65,12 +65,19 @@ namespace swr_project
 
             string UserName = userName.Text;
             string password = Password.Text;
-
+            if(UserName == "" || password == "")
+            {
+                MessageBox.Show("Please fill all the fields");
+            }
+            else
+            {
+                
+            }
           newUser= db_helpers.FindUser(UserName, password);
 
             if (newUser == null)
             {
-                MessageBox.Show("not Exist");
+                MessageBox.Show("User Name or Password is incorrect");
             }
 
             else
@@ -86,6 +93,7 @@ namespace swr_project
 
 
             }
+
             
         }
 

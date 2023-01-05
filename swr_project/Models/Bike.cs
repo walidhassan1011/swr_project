@@ -12,14 +12,14 @@ namespace swr_project.Models
     {
         DB_helpers db = new DB_helpers();
 
-        public Bike(string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber) 
-            : base(fuelType, model, brand, year, chasis_Number, price, engine_Number, serialNumber)
+        public Bike(string fuelType, string model, string brand, string type, double price, string engine_Number, string serialNumber) 
+            : base(fuelType, model, brand, type, price, engine_Number, serialNumber)
         {
 
         }
-        public void addNewBike(Vehicles vehicle)
+        public Task addNewBike(Vehicles vehicle)
         {
-            db.AddNewVehicle(vehicle);
+           return db.AddNewVehicle(vehicle);
         }
         public void editBike(Vehicles vehicleOld, Vehicles vehiclesNew)
         {
