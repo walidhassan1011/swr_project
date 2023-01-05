@@ -37,28 +37,23 @@ namespace swr_project
 
         private void SigninInformatiom_Load(object sender, EventArgs e)
         {
-            Vehicles v1 = new Vehicles(
-                    "1",
-                    "Diesel",
-                    "Audi",
-                    "A4",
-                    "2019",
-                    "123456789",
-                    100000,
-                    "123456789",
-                    "123456789"
-
-                );
-            User u1 = new User();
-            u1.firstName = "John";
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             DB_helpers db = new DB_helpers();
             User u1 = new User(
-                    
-                    
+                    "walid",
+                    "hassan",
+                    "walid hassan",
+                    "1234 Main St",
+                    123456789,
+                    "walidhassan009@gmail.com",
+                    "Admin",
+                    "Male",
+                    "1234"
+
                 );
 
             db.AddNewUser(u1);
