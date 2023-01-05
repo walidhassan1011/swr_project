@@ -72,7 +72,7 @@ namespace swr_project.controllers
         {
             try
             {
-
+                
                 
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
                 user.Password = hashedPassword;

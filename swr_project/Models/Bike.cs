@@ -6,22 +6,21 @@ using System.Threading.Tasks;
 
 namespace swr_project.Models
 {
-    public class Bike
+    public class Bike : Vehicles
     {
-        public Bike( string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber) 
-            : base()
+
+        public Bike(string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber) 
+            : base(fuelType, model, brand, year, chasis_Number, price, engine_Number, serialNumber)
         {
 
         }
-        public Bike addNewBike()
+        public void addNewBike()
         {
-            Bike bike = new Bike();
-            return bike;
+            
         }
-        public Bike editBike()
+        public void editBike()
         {
-            Bike bike =new Bike();
-            return bike;
+            
         }
         public void removeBike()
         {

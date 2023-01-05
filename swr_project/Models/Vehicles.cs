@@ -19,9 +19,8 @@ namespace swr_project.Models
         public double price { get; set; }
         public string Engine_Number { get; set; }
         public string serialNumber { get; set; }
-        public Vehicles(string id, string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber)
+        public Vehicles(string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber)
         {
-            Id = id;
             this.fuelType = fuelType;
             Model = model;
             this.brand = brand;
