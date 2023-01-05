@@ -15,11 +15,11 @@ namespace swr_project.Models
         {
 
         }
-        public void addNewBike()
+        public void addNewBike(Bike bike)
         {
             
         }
-        public void editBike()
+        public void editBike(Bike bikeOld, Bike bikeNew)
         {
             
         }
