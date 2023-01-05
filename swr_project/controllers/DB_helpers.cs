@@ -103,7 +103,7 @@ namespace swr_project.controllers
                     
             }
         }
-        public Person FindUser(string name,string Password)
+        public User FindUser(string name,string Password)
         {
 
 

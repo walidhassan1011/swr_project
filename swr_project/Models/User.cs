@@ -24,9 +24,9 @@ namespace swr_project.Models
         public DateTime created { get; set; }
         public string type { get; set; }
         public string gender { get; set; }
-        public string password { get; set; }
+        public string Password { get; set; }
 
-        }
+        
 
     }
 }

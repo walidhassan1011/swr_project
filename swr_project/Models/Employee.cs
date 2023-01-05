@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace swr_project.Models
 {
-    public class Employee
+    public class Employee:User
     {
         public Employee(string firstName, string lastName, string adress, int phoneNumber, string Email, string type, string Password)
            : base(firstName, lastName, adress, phoneNumber, Email, type, Password)
