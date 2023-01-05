@@ -37,5 +37,6 @@ namespace swr_project.Models
             this.gender = gender;
             Password = password;
         }
+        public User() { }
     }
 }

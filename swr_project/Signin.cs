@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace swr_project
 {
@@ -15,6 +16,19 @@ namespace swr_project
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SigninInformatiom ins=  new SigninInformatiom();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
