@@ -58,7 +58,16 @@ namespace swr_project.controllers
             try {
                 var collection = ConnectMongo<Invoice>(invoicesCollection);
                 var filter = Builders<Invoice>.Filter.Eq("_id", invoice._id);
+                if (collection.DeleteOneAsync(filter).Result.DeletedCount == 0)
+                {
+                    MessageBox.Show("Invoice not found");
+                }
+                else
+                {
                 collection.DeleteOneAsync(filter);
+                    
+                    
+                }
             }
             catch (Exception ex)
             {
@@ -72,13 +81,22 @@ namespace swr_project.controllers
         {
             try
             {
-                
-                
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                user.Password = hashedPassword;
-               
                 var collection = ConnectMongo<User>(usersCollection);
-                await collection.InsertOneAsync(user);
+
+                var filter = Builders<User>.Filter.Eq("email", user.Email);
+
+                if (collection.Find(filter).FirstOrDefaultAsync().Result != null)
+                {
+                    MessageBox.Show("Email already exists");
+                }
+                else
+                {
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                    await collection.InsertOneAsync(user);
+                }
+
+
+               
                
             }
             catch(Exception e)
@@ -156,6 +174,25 @@ namespace swr_project.controllers
 
         
         // car
+            
+            public async Task<List<Vehicles>> GetAllVehicles()
+        {
+            try
+            {
+                var collection = ConnectMongo<Vehicles>(VehiclesCollection);
+                return await collection.Find(
+                    _ => true).ToListAsync();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                return null;
+            }
+
+        }
 
             public void AddNewVehicle(Vehicles vehicle)
         {
@@ -210,13 +247,27 @@ namespace swr_project.controllers
 
 
         // order
-
-        public Task AddNewOrder(Order order)
+        public async Task<List<Order>> GetAllOrders()
         {
             try
             {
                 var collection = ConnectMongo<Order>(OrdersCollection);
-               return  collection.InsertOneAsync(order);
+                return await collection.Find(
+                    _ => true).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public  Task AddNewOrder(Order order)
+        {
+            try
+            {
+                var collection = ConnectMongo<Order>(OrdersCollection);
+               return collection.InsertOneAsync(order);
             }
             catch (Exception ex)
             {

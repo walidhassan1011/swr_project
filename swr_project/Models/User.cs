@@ -26,7 +26,7 @@ namespace swr_project.Models
         public string gender { get; set; }
         public string Password { get; set; }
 
-        
+       
 
     }
 }
