@@ -13,5 +13,19 @@ namespace swr_project.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
+        public Customer orderBy { get; set; }
+        public DateTime createdAt { get; set; }
+        public void OrderBy()
+        {
+
+        }
+        public void YourOrder()
+        {
+
+        }
+        public void viewAllOrders()
+        {
+
+        }
     }
 }

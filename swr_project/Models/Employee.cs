@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace swr_project.Models
 {
-    public class Employee:Person
+    public class Employee:User
     {
-        public Employee(string firstName, string lastName, string adress, int phoneNumber, string Email, string type, string password) : base()
+        public Employee(string firstName, string lastName, string adress, int phoneNumber, string Email, string type, string Password)
+           : base(firstName, lastName, adress, phoneNumber, Email, type, Password)
         {
 
         }
         public void addNewCar()
         {
-            Car car = new Car();
+            
         }
         
         public void editCar()
@@ -23,6 +24,26 @@ namespace swr_project.Models
         }
 
         public void removeCar()
+        {
+
+        }
+        public void maintenanceAgency()
+        {
+
+        }
+        public void addMaintenanceAgency()
+        {
+
+        }
+        public void deleteMaintenanceAgency()
+        {
+
+        }
+        public void editMaintenaceAgency()
+        {
+
+        }
+        public void viewAllMaintenaceAgency()
         {
 
         }

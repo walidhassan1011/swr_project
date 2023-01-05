@@ -10,7 +10,9 @@ namespace swr_project.Models
 {
     public class Vehicles
     {
-        public string Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string _id { get; set; }
         public string fuelType { get; set; }
         public string Model { get; set; }
         public string brand { get; set; }
@@ -19,9 +21,8 @@ namespace swr_project.Models
         public double price { get; set; }
         public string Engine_Number { get; set; }
         public string serialNumber { get; set; }
-        public Vehicles(string id, string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber)
+        public Vehicles(string fuelType, string model, string brand, string year, string chasis_Number, double price, string engine_Number, string serialNumber)
         {
-            Id = id;
             this.fuelType = fuelType;
             Model = model;
             this.brand = brand;

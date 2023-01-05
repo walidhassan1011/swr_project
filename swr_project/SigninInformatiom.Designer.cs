@@ -113,6 +113,7 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "SigninInformatiom";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.SigninInformatiom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

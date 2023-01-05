@@ -13,7 +13,8 @@ namespace swr_project.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string invoice_id { get; set; }
+        public int _id { get; set; }
+        
         
         public float product_price { get; set; }
 
