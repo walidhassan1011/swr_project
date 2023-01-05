@@ -26,5 +26,10 @@ namespace swr_project
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
