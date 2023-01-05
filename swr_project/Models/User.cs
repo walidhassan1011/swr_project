@@ -1,18 +1,16 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace swr_project.Models
 {
-    public class Person
+    public class User
     {
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string ID { get; set; }
@@ -27,18 +25,6 @@ namespace swr_project.Models
         public string type { get; set; }
         public string gender { get; set; }
         public string password { get; set; }
-        public Person(string firstName, string lastName, string adress, int phoneNumber, string Email, string type, string password)
-        {
-
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.fullName = firstName + lastName;
-            this.adress = adress;
-            this.phoneNumber = phoneNumber;
-            this.Email = Email;
-            this.type = type;
-            this.password = password;
-        }
 
 
     }

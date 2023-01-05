@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using swr_project.Models;
+
 
 namespace swr_project
 {
@@ -25,6 +27,29 @@ namespace swr_project
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SigninInformatiom_Load(object sender, EventArgs e)
+        {
+            Vehicles v1 = new Vehicles(
+                    "1",
+                    "Diesel",
+                    "Audi",
+                    "A4",
+                    "2019",
+                    "123456789",
+                    100000,
+                    "123456789",
+                    "123456789"
+
+                );
+            User u1 = new User();
+            u1.firstName = "John";
         }
     }
 }

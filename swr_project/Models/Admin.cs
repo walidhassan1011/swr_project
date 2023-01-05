@@ -10,5 +10,8 @@ namespace swr_project.Models
     public class Admin:Employee
     {
         public Admin()
+        {
+            
+        }
     }
 }

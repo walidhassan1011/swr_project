@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace swr_project.Models
 {
-   public class Customer:Person
+   public class Customer:User
     {
     }
 }

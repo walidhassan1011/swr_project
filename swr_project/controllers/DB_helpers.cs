@@ -68,16 +68,16 @@ namespace swr_project.controllers
 
         
         // Customer
-        public async void  AddNewUser(Person user)
+        public async void  AddNewUser(User user)
         {
             try
             {
-
+                
                 
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
                 user.Password = hashedPassword;
                
-                var collection = ConnectMongo<Person>(usersCollection);
+                var collection = ConnectMongo<User>(usersCollection);
                 await collection.InsertOneAsync(user);
                
             }
@@ -88,14 +88,14 @@ namespace swr_project.controllers
         
     }
         }
-
-        public void UpdateUser(Person oldUser,Person newUser)
+        
+        public void UpdateUser(User oldUser,User newUser)
         {
             try
             {
                 
-                var collection = ConnectMongo<Person>(usersCollection);
-                var filter = Builders<Person>.Filter.Eq("_id", oldUser._id);
+                var collection = ConnectMongo<User>(usersCollection);
+                var filter = Builders<User>.Filter.Eq("_id", oldUser._id);
                 collection.ReplaceOneAsync(filter, newUser, new ReplaceOptions { IsUpsert = true });
             }
             catch (Exception ex)
@@ -107,8 +107,8 @@ namespace swr_project.controllers
         {
 
 
-            var collection = ConnectMongo<Person>(usersCollection);
-            var filter = Builders<Person>.Filter.Eq("name", name);
+            var collection = ConnectMongo<User>(usersCollection);
+            var filter = Builders<User>.Filter.Eq("name", name);
             var user= collection.Find(filter).FirstOrDefault();
             if (user == null)
             {
@@ -129,11 +129,11 @@ namespace swr_project.controllers
             
             
         }
-        public void DeleteUser(Person user)
+        public void DeleteUser(User user)
         {
             try
             {
-                var collection = ConnectMongo<Person>(usersCollection);
+                var collection = ConnectMongo<User>(usersCollection);
                 
                if (collection.DeleteOneAsync(c => c._id == user._id).Result.DeletedCount == 1)
                 {
