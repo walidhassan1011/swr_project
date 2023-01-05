@@ -15,9 +15,10 @@ namespace swr_project.Models
         {
 
         }
-        public void viewAllUsers()
+        public List<User> viewAllUsers()
         {
-
+            var usersList = new List<User>();
+            return usersList;
         }
         public void addUser(User user)
         {
@@ -27,10 +28,6 @@ namespace swr_project.Models
         {
 
         }public void removeUser(User user)
-        {
-
-        }
-        public void findUser(string name,string password)
         {
 
         }

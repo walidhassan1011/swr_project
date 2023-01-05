@@ -15,21 +15,22 @@ namespace swr_project.Models
         {
 
         }
-        public void addNewBike(Bike bike)
+        public void addNewBike(Vehicles vehicle)
         {
             
         }
-        public void editBike(Bike bikeOld, Bike bikeNew)
+        public void editBike(Vehicles vehicleOld, Vehicles vehiclesNew)
         {
             
         }
-        public void removeBike()
+        public void removeBike(Vehicles vehicle)
         {
 
         }
-        public void viewAllBike()
+        public List<Vehicles> viewAllBike()
         {
-
+            var bikeList = new List<Vehicles>();
+            return bikeList;
         }
     }
 }
