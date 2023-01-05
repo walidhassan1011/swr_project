@@ -14,15 +14,15 @@ namespace swr_project.Models
 
         }
         public Order customerOrders { get; set; }
-        public void addOrder()
+        public void addOrder(Order order)
         {
 
         }
-        public void removeOrder()
+        public void removeOrder(Order order)
         {
 
         }
-        public void editOrder()
+        public void editOrder(Order orderOld, Order orderNew)
         {
 
         }
