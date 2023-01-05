@@ -10,23 +10,24 @@ namespace swr_project.Models
     public class Admin:Employee
     {
 
-        public Admin(string firstName, string lastName, string adress, int phoneNumber, string Email, string type, string Password)
-           : base(firstName, lastName, adress, phoneNumber, Email, type, Password)
+        public Admin(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password)
+           : base( firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
         {
 
         }
-        public void viewAllCustomers()
+        public List<User> viewAllUsers()
+        {
+            var usersList = new List<User>();
+            return usersList;
+        }
+        public void addUser(User user)
         {
 
         }
-        public void addCustomer()
+        public void editUser(User userOld, User userNew)
         {
 
-        }
-        public void editCustomer()
-        {
-
-        }public void removeCustomer()
+        }public void removeUser(User user)
         {
 
         }

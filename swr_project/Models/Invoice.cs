@@ -22,7 +22,7 @@ namespace swr_project.Models
 
         public Customer invoice_name { get; set; }
 
-        public void addNewInvoice()
+        public void addNewInvoice(Invoice invoice)
         {
             /*invoice_name = new Customer();
             this.invoice_id = invoice_id;
@@ -31,15 +31,14 @@ namespace swr_project.Models
 
         }
 
-        public void deleteInvoice()
+        public void deleteInvoice(Invoice invoice)
         {
 
         }
 
-        public void editInvoice()
+        public void editInvoice(Invoice invoiceOld, Invoice invoiceNew)
         {
-            this.product_price = product_price;
-            this.product_name = product_name;
+            
         }
         
     }

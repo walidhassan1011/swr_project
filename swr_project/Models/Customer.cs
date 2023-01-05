@@ -8,21 +8,21 @@ namespace swr_project.Models
 {
    public class Customer:User
     {
-        public Customer(string firstName, string lastName, string adress, int phoneNumber, string Email, string type, string Password)
-           : base( firstName, lastName, adress, phoneNumber, Email, type, Password)
+        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password)
+           : base( firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
         {
 
         }
         public Order customerOrders { get; set; }
-        public void addOrder()
+        public void addOrder(Order order)
         {
 
         }
-        public void removeOrder()
+        public void removeOrder(Order order)
         {
 
         }
-        public void editOrder()
+        public void editOrder(Order orderOld, Order orderNew)
         {
 
         }

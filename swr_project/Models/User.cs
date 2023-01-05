@@ -25,8 +25,17 @@ namespace swr_project.Models
         public string type { get; set; }
         public string gender { get; set; }
         public string Password { get; set; }
-
-       
-
+        public User( string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.fullName = fullName;
+            this.adress = adress;
+            this.phoneNumber = phoneNumber;
+            Email = email;
+            this.type = type;
+            this.gender = gender;
+            Password = password;
+        }
     }
 }

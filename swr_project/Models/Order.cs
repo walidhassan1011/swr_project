@@ -15,17 +15,18 @@ namespace swr_project.Models
         public string _id { get; set; }
         public Customer orderBy { get; set; }
         public DateTime createdAt { get; set; }
-        public void OrderBy()
+        public void OrderBy(Customer customer)
         {
 
         }
-        public void YourOrder()
+        public void YourOrder(Invoice invoice)
         {
 
         }
-        public void viewAllOrders()
+        public List<Order> viewAllOrders()
         {
-
+            var OrdeList = new List<Order>();
+            return OrdeList;
         }
     }
 }
