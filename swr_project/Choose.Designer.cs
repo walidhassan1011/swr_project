@@ -70,6 +70,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Orders";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -83,8 +84,9 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Products";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form4
+            // Choose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,8 +97,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.Name = "Form4";
+            this.Name = "Choose";
             this.Text = "Form4";
+            this.Load += new System.EventHandler(this.Choose_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
