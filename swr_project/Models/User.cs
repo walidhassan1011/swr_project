@@ -39,6 +39,9 @@ namespace swr_project.Models
             this.gender = gender;
             Password = password;
         }
+        public User()
+        {
+        }
         public void addNewOrder(Order order)
         {
             db.AddNewOrder(order);
