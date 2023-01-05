@@ -20,7 +20,7 @@ namespace swr_project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SigninInformatiom ins = new SigninInformatiom();
+            SigninInformatiom ins=  new SigninInformatiom();
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
