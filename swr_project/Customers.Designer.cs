@@ -30,11 +30,14 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.car_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Full_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone_Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,13 +52,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.car_name,
-            this.Column1});
+            this.ID,
+            this.Full_Name,
+            this.Phone_Number,
+            this.Address});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -63,19 +69,33 @@
             this.dataGridView1.Size = new System.Drawing.Size(501, 417);
             this.dataGridView1.TabIndex = 8;
             // 
-            // car_name
+            // ID
             // 
-            this.car_name.HeaderText = "Column1";
-            this.car_name.MinimumWidth = 6;
-            this.car_name.Name = "car_name";
-            this.car_name.Width = 125;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 125;
             // 
-            // Column1
+            // Full_Name
             // 
-            this.Column1.HeaderText = "car_name";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
+            this.Full_Name.HeaderText = "Full_Name";
+            this.Full_Name.MinimumWidth = 6;
+            this.Full_Name.Name = "Full_Name";
+            this.Full_Name.Width = 125;
+            // 
+            // Phone_Number
+            // 
+            this.Phone_Number.HeaderText = "Phone_Number";
+            this.Phone_Number.MinimumWidth = 6;
+            this.Phone_Number.Name = "Phone_Number";
+            this.Phone_Number.Width = 125;
+            // 
+            // Address
+            // 
+            this.Address.HeaderText = "Address";
+            this.Address.MinimumWidth = 6;
+            this.Address.Name = "Address";
+            this.Address.Width = 125;
             // 
             // button1
             // 
@@ -83,12 +103,13 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Franklin Gothic Demi", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.button1.Location = new System.Drawing.Point(519, 358);
+            this.button1.Location = new System.Drawing.Point(519, 367);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(62, 39);
             this.button1.TabIndex = 9;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -96,7 +117,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Franklin Gothic Demi", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.button2.Location = new System.Drawing.Point(603, 358);
+            this.button2.Location = new System.Drawing.Point(603, 367);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 39);
             this.button2.TabIndex = 10;
@@ -116,19 +137,35 @@
             this.button3.Text = "Remove";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // Form5
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Franklin Gothic Demi", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.button4.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.button4.Location = new System.Drawing.Point(689, 399);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(106, 39);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "Back";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form5";
+            this.Name = "Customers";
             this.Text = "Form5";
+            this.Load += new System.EventHandler(this.Customers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -139,10 +176,13 @@
 
         private PictureBox pictureBox1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn car_name;
-        private DataGridViewTextBoxColumn Column1;
         private Button button1;
         private Button button2;
         private Button button3;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Full_Name;
+        private DataGridViewTextBoxColumn Phone_Number;
+        private DataGridViewTextBoxColumn Address;
+        private Button button4;
     }
 }

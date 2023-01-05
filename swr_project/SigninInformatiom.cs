@@ -20,6 +20,8 @@ namespace swr_project
     {
 
         DB_helpers db_helpers = new DB_helpers();
+
+        public static string TYPE;
      
         public SigninInformatiom()
         {
@@ -59,6 +61,8 @@ namespace swr_project
         private void SignIn_Click(object sender, EventArgs e)
         {
             User newUser = new User();
+
+
             string UserName = userName.Text;
             string password = Password.Text;
 
@@ -71,12 +75,20 @@ namespace swr_project
 
             else
             {
+
+
+                newUser.type = TYPE;
                 Choose ins = new Choose();
                 ins.MdiParent = this.MdiParent;
                 this.Hide();
+
                 ins.ShowDialog();
+
+
             }
             
         }
+
+        
     }
 }

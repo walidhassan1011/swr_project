@@ -16,5 +16,13 @@ namespace swr_project
         {
             InitializeComponent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Orders ins = new Orders();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
+        }
     }
 }

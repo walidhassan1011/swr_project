@@ -32,5 +32,21 @@ namespace swr_project
 
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VehiclesAdding ins = new VehiclesAdding();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Choose ins = new Choose();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
+        }
     }
 }
