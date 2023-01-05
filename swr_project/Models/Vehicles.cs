@@ -10,6 +10,8 @@ namespace swr_project.Models
 {
     public class Vehicles
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string fuelType { get; set; }
         public string Model { get; set; }
