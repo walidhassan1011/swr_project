@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using swr_project.controllers;
 
 namespace swr_project.Models
 {
     public class User
     {
+        DB_helpers db = new DB_helpers();
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -36,6 +38,18 @@ namespace swr_project.Models
             this.type = type;
             this.gender = gender;
             Password = password;
+        }
+        public void addNewOrder(Order order)
+        {
+            db.AddNewOrder(order);
+        }
+        public void deleteOrder(Order order) 
+        {
+            //We need to make the method of deleting in the database .
+        }
+        public void editOrder(Order orderOld, Order orderNew)
+        {
+            db.UpdateOrder(orderOld);//We need to modify the method in the database to take the new order.
         }
     }
 }

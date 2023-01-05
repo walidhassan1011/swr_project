@@ -17,11 +17,11 @@ namespace swr_project.Models
         public DateTime createdAt { get; set; }
         public void OrderBy(Customer customer)
         {
-
+            //We need to make the method in database first.
         }
         public void YourOrder(Invoice invoice)
         {
-
+            //We need to make the method in database first.
         }
         public List<Order> viewAllOrders()
         {
