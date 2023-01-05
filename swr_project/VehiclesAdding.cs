@@ -21,5 +21,13 @@ namespace swr_project
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Products ins = new Products();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
+        }
     }
 }

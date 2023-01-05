@@ -91,5 +91,14 @@ namespace swr_project
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Customers ins = new Customers();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
+
+        }
     }
 }

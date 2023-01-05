@@ -15,6 +15,37 @@ namespace swr_project
         public Customers()
         {
             InitializeComponent();
+            
+        }
+
+         
+
+    private void button1_Click(object sender, EventArgs e)
+        {
+
+           
+            Person ins = new Person();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Customers_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Choose ins = new Choose();
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
         }
     }
 }
