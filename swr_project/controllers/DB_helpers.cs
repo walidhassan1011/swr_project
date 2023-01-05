@@ -126,7 +126,7 @@ namespace swr_project.controllers
 
 
             var collection = ConnectMongo<User>(usersCollection);
-            var filter = Builders<User>.Filter.Eq("name", name);
+            var filter = Builders<User>.Filter.Eq("firstName", name);
             var user= collection.Find(filter).FirstOrDefault();
             if (user == null)
             {
