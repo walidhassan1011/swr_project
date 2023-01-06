@@ -1,4 +1,5 @@
-﻿using System;
+﻿using swr_project.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,51 @@ namespace swr_project
 {
     public partial class Person : Form
     {
+        public User newUser;
+
         public Person()
         {
             InitializeComponent();
         }
-
+           public Person(User newUserr)
+            {
+                InitializeComponent();
+                this.newUser = newUserr;
+            }
+        
         private void button2_Click(object sender, EventArgs e)
         {
+            string FullName = Firstname.Text + LastName.Text;
+            string Gender;
+            string Type = "Customer";
+            string DefaultPassword="1234";
+            List<Order> orders = new List<Order>();
+            bool Checked = Male.Checked;
+            if (Checked)
+            {
+                Gender     = "Male";
+            }
+            else
+            {
+                Gender = "Female";
+            }
+            Customer newCustomer = new Customer(
+
+                Firstname.Text,
+                LastName.Text,
+                FullName,
+                Address.Text,
+               Convert.ToInt32(PhoneNumber.Text),
+               Email.Text,
+                    Type,
+                    Gender,
+                    DefaultPassword,
+                    orders
+                );
+            Admin newAdmin = new Admin();
+
+            newAdmin.addUser(newCustomer);
+
 
         }
 
@@ -94,10 +133,21 @@ namespace swr_project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Customers ins = new Customers();
+           
+            Customers ins = new Customers(newUser);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
+
+        }
+
+        private void Person_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Female_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

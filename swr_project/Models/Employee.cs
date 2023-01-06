@@ -13,25 +13,10 @@ namespace swr_project.Models
         {
 
         }
-        public void maintenanceAgency()
+        public Employee()
         {
-            //We need to make the Maintennace first.
+
         }
-        public void addMaintenanceAgency()
-        {
-            //We need to make the Maintennace first.
-        }
-        public void deleteMaintenanceAgency()
-        {
-            //We need to make the Maintennace first.
-        }
-        public void editMaintenaceAgency()
-        {
-            //We need to make the Maintennace first.
-        }
-        public void viewAllMaintenaceAgency()
-        {
-            //We need to make the Maintennace first.
-        }
+       
     }
 }

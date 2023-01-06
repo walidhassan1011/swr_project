@@ -9,14 +9,16 @@ namespace swr_project.Models
 {
    public class Customer:User
     {
-        DB_helpers db = new DB_helpers();
-
-        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password)
+        public List<Order>? customerOrders { get; set; }
+        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password, List<Order> customerOrders)
            : base( firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
         {
-
+            this.customerOrders = customerOrders;
         }
-        public Order customerOrders { get; set; }
-        
+        public Customer()
+        {
+        }
+
+
     }
 }

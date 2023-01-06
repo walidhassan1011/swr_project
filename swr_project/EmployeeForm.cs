@@ -1,4 +1,5 @@
-﻿using System;
+﻿using swr_project.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,51 +8,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using swr_project.controllers;
-using swr_project.Models;
-using static System.Windows.Forms.DataFormats;
 
 namespace swr_project
 {
-    public partial class Choose : Form
+    public partial class EmployeeForm : Form
     {
         public User newUser;
-        public Choose()
+        string UserId;
+        public EmployeeForm()
         {
             InitializeComponent();
         }
-        public Choose(User newUser)
+        public EmployeeForm(User newUser)
         {
             InitializeComponent();
             this.newUser = newUser;
-            if (newUser.type == "Admin"||newUser.type=="admin")
-            {
-                button4.Visible = true;
-
-            }
-            else
-            {
-                button4.Visible = false;
-                
-                
-           }
-        }
-        private void Choose_Load(object sender, EventArgs e)
-        {
-
+            List<User> Employees = newUser.GetAllEmployees();
+            dataGridView1.DataSource = Employees;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Employee_Load(object sender, EventArgs e)
         {
-            Products ins = new Products (newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Orders ins = new Orders(newUser);
+            AddingEmployee ins = new AddingEmployee(newUser);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
@@ -59,19 +42,29 @@ namespace swr_project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Customers ins = new Customers(newUser);
+            // deleteUser
+
+            Admin admin = new Admin();
+            admin.removeUser(UserId);
+            Choose ins = new Choose(newUser);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
+
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            EmployeeForm ins = new EmployeeForm(newUser);
+            Choose ins = new Choose(newUser);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           UserId= dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
     }
 }

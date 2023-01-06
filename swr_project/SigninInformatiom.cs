@@ -74,6 +74,7 @@ namespace swr_project
                 
             }
           newUser= db_helpers.FindUser(UserName, password);
+            
 
             if (newUser == null)
             {
@@ -84,12 +85,15 @@ namespace swr_project
             {
 
 
-                newUser.type = TYPE;
-                Choose ins = new Choose();
+
+                TYPE = newUser.type;
+                MessageBox.Show("Welcome " + newUser.type);
+                Choose ins = new Choose(newUser);
                 ins.MdiParent = this.MdiParent;
                 this.Hide();
 
                 ins.ShowDialog();
+            }
 
 
             }
@@ -98,5 +102,5 @@ namespace swr_project
         }
 
         
-    }
+    
 }

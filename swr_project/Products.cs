@@ -1,4 +1,5 @@
-﻿using System;
+﻿using swr_project.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,19 @@ namespace swr_project
     public partial class Products : Form
     {
         public string name = "car";
+        public User newUser;
+
         public Products()
         {
             InitializeComponent();
+        }
+        public Products(User newUser)
+        {
+            InitializeComponent();
+            this.newUser = newUser;
+            List<Vehicles> listOfVehicles=  newUser.viewAllVehicles();
+            dataGridView1.DataSource = listOfVehicles;
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,7 +46,7 @@ namespace swr_project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VehiclesAdding ins = new VehiclesAdding();
+            VehiclesAdding ins = new VehiclesAdding(newUser);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
@@ -43,10 +54,15 @@ namespace swr_project
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Choose ins = new Choose();
+            Choose ins = new Choose(newUser);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
+        }
+
+        private void Products_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

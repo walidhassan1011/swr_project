@@ -13,8 +13,22 @@ namespace swr_project.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
-        public Customer orderBy { get; set; }
+        public string orderBy { get; set; }
+
+        public string order { get; set; }
         public DateTime createdAt { get; set; }
+
+        
+        public Order(String orderBy,string order)
+        {
+            this.orderBy = orderBy;
+            this.order=order;
+            this.createdAt = DateTime.Now;
+        }
+
+        public Order()
+        {
+        }
         public void OrderBy(Customer customer)
         {
             //We need to make the method in database first.
@@ -23,10 +37,6 @@ namespace swr_project.Models
         {
             //We need to make the method in database first.
         }
-        public List<Order> viewAllOrders()
-        {
-            var OrdeList = new List<Order>();
-            return OrdeList;
-        }
+        
     }
 }

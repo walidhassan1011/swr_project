@@ -28,10 +28,6 @@ namespace swr_project.Models
         {
             db.DeleteVehicle(car);
         }
-        public List<Vehicles> viewAllCars()
-        {
-            var carsList=new List<Vehicles>();
-            return carsList;
-        }
+        
     }
 }

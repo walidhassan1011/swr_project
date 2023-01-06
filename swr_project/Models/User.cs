@@ -34,17 +34,48 @@ namespace swr_project.Models
             this.fullName = fullName;
             this.adress = adress;
             this.phoneNumber = phoneNumber;
-            Email = email;
+            this.Email = email;
             this.type = type;
+            this.created = DateTime.Now;
             this.gender = gender;
-            Password = password;
+            this.Password = password;
         }
         public User()
         {
         }
+        public Customer FinUserById(string id)
+        {
+
+            return db.FindUserById(id);
+
+        }
+        public List<Vehicles> viewAllVehicles()
+        {
+            var VehiclesList = new List<Vehicles>();
+            VehiclesList = db.viewAllVehicles();
+            return VehiclesList;
+        }
+        public List<Customer> viewAllUsers()
+        {
+            var UsersList = new List<Customer>();
+            UsersList = db.GetAllUsers();
+            return UsersList;
+        }
         public void addNewOrder(Order order)
         {
             db.AddNewOrder(order);
+        }
+        public List<Order> viewAllOrders()
+        {
+            var OrderList =  db.GetAllOrders();
+            return OrderList;
+        }
+        public List<User> GetAllEmployees()
+        {
+
+            var EmployeeList = db.GetAllEmployee();
+            return EmployeeList;
+            
         }
         public void deleteOrder(Order order) 
         {
@@ -53,6 +84,26 @@ namespace swr_project.Models
         public void editOrder(Order orderOld, Order orderNew)
         {
             db.UpdateOrder(orderOld);//We need to modify the method in the database to take the new order.
+        }
+        public void maintenanceAgency()
+        {
+            //We need to make the Maintennace first.
+        }
+        public void addMaintenanceAgency()
+        {
+            //We need to make the Maintennace first.
+        }
+        public void deleteMaintenanceAgency()
+        {
+            //We need to make the Maintennace first.
+        }
+        public void editMaintenaceAgency()
+        {
+            //We need to make the Maintennace first.
+        }
+        public void viewAllMaintenaceAgency()
+        {
+            //We need to make the Maintennace first.
         }
     }
 }

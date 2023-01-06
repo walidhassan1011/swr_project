@@ -17,13 +17,13 @@ namespace swr_project.controllers
 
 
 
-        private IMongoCollection<T>ConnectMongo<T>(in string collection)
+        private IMongoCollection<T> ConnectMongo<T>(in string collection)
         {
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase(dbName);
-            return  database.GetCollection<T>(collection);
+            return database.GetCollection<T>(collection);
 
-            
+
         }
         // invoices
         public void AddNewInvoice(Invoice invoice)
@@ -50,12 +50,13 @@ namespace swr_project.controllers
             {
                 MessageBox.Show(ex.Message);
             }
-                
+
         }
 
         public void DeleteInvoice(Invoice invoice)
         {
-            try {
+            try
+            {
                 var collection = ConnectMongo<Invoice>(invoicesCollection);
                 var filter = Builders<Invoice>.Filter.Eq("_id", invoice._id);
                 if (collection.DeleteOneAsync(filter).Result.DeletedCount == 0)
@@ -64,9 +65,9 @@ namespace swr_project.controllers
                 }
                 else
                 {
-                collection.DeleteOneAsync(filter);
-                    
-                    
+                    collection.DeleteOneAsync(filter);
+
+
                 }
             }
             catch (Exception ex)
@@ -75,15 +76,15 @@ namespace swr_project.controllers
             }
         }
 
-        
+
         // Customer
-        public async void  AddNewUser(User user)
+        public async void AddNewUser(User user)
         {
             try
             {
                 var collection = ConnectMongo<User>(usersCollection);
 
-                var filter = Builders<User>.Filter.Eq("email", user.Email);
+                var filter = Builders<User>.Filter.Eq("Email", user.Email);
 
                 if (collection.Find(filter).FirstOrDefaultAsync().Result != null)
                 {
@@ -96,38 +97,54 @@ namespace swr_project.controllers
                 }
 
 
-               
-               
+
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-            
-        
-    }
+
+
+            }
         }
-        
-        public void UpdateUser(User oldUser,User newUser)
+
+        public void UpdateUser(User User)
         {
             try
             {
-                
+
                 var collection = ConnectMongo<User>(usersCollection);
-                var filter = Builders<User>.Filter.Eq("_id", oldUser._id);
-                collection.ReplaceOneAsync(filter, newUser, new ReplaceOptions { IsUpsert = true });
+                var filter = Builders<User>.Filter.Eq("_id", User._id);
+                collection.ReplaceOneAsync(filter, User, new ReplaceOptions { IsUpsert = true });
             }
             catch (Exception ex)
             {
-                    
+
             }
         }
-        public User FindUser(string name,string Password)
+        public Customer FindUserById(string Id)
+        {
+            
+                try
+                {
+                    var collection = ConnectMongo<Customer>(usersCollection);
+                    var filter = Builders<Customer>.Filter.Eq("_id", Id);
+                    return collection.Find(filter).FirstOrDefaultAsync().Result;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return null;
+                }
+            
+        }
+        public User FindUser(string name, string Password)
         {
 
 
             var collection = ConnectMongo<User>(usersCollection);
             var filter = Builders<User>.Filter.Eq("firstName", name);
-            var user= collection.Find(filter).FirstOrDefault();
+            var user = collection.Find(filter).FirstOrDefault();
             if (user == null)
             {
                 return null;
@@ -135,25 +152,46 @@ namespace swr_project.controllers
             else
             {
 
-            if (BCrypt.Net.BCrypt.Verify(Password, user.Password))
-            {
-                return user;
+                if (BCrypt.Net.BCrypt.Verify(Password, user.Password))
+                {
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
-            {
-                return null;
-            }
-            }
-            
-            
+
+
         }
-        public void DeleteUser(User user)
+
+        public  List<Customer> GetAllUsers()
+        {
+            var collection = ConnectMongo<Customer>(usersCollection);
+            var filter = Builders<Customer>.Filter.Eq("type", "Customer");
+            var result = collection.Find(filter).ToList();
+
+            return result;
+        }
+        public List<User> GetAllEmployee()
+        {
+            var collection = ConnectMongo<User>(usersCollection);
+
+            // filter with type = employee && type = admin
+
+            var filter = Builders<User>.Filter.Eq("type", "Employee") | Builders<User>.Filter.Eq("type", "Admin");
+
+            var result = collection.Find(filter).ToList();
+
+            return result;
+        }
+        public void DeleteUser(string Id)
         {
             try
             {
                 var collection = ConnectMongo<User>(usersCollection);
-                
-               if (collection.DeleteOneAsync(c => c._id == user._id).Result.DeletedCount == 1)
+
+                if (collection.DeleteOneAsync(c => c._id == Id).Result.DeletedCount == 1)
                 {
                     MessageBox.Show("deleted");
                 }
@@ -167,15 +205,15 @@ namespace swr_project.controllers
             {
                 MessageBox.Show(ex.Message);
             }
-        
-    
-        }
-        
 
-        
+
+        }
+
+
+
         // car
-            
-            public async Task<List<Vehicles>> GetAllVehicles()
+
+        public async Task<List<Vehicles>> GetAllVehicles()
         {
             try
             {
@@ -194,7 +232,7 @@ namespace swr_project.controllers
 
         }
 
-            public Task AddNewVehicle(Vehicles vehicle)
+        public Task AddNewVehicle(Vehicles vehicle)
         {
             try
             {
@@ -205,8 +243,8 @@ namespace swr_project.controllers
             {
                 return null;
             }
-            
-            }
+
+        }
 
         public Task UpdateVehicle(Vehicles oldvVehicle)
         {
@@ -223,7 +261,7 @@ namespace swr_project.controllers
 
 
 
-            }
+        }
 
         public void DeleteVehicle(Vehicles vehicle)
         {
@@ -235,9 +273,18 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
-                
+
             }
 
+
+
+        }
+
+        public List<Vehicles> viewAllVehicles()
+        {
+            var collection = ConnectMongo<Vehicles>(VehiclesCollection);
+            var result = collection.FindAsync(_ => true);
+            return result.Result.ToList();
 
 
         }
@@ -247,13 +294,13 @@ namespace swr_project.controllers
 
 
         // order
-        public async Task<List<Order>> GetAllOrders()
+        public List<Order> GetAllOrders()
         {
             try
             {
                 var collection = ConnectMongo<Order>(OrdersCollection);
-                return await collection.Find(
-                    _ => true).ToListAsync();
+                var result = collection.FindAsync(_ => true);
+                return result.Result.ToList();
             }
             catch (Exception ex)
             {
@@ -262,12 +309,12 @@ namespace swr_project.controllers
             }
         }
 
-        public  Task AddNewOrder(Order order)
+        public Task AddNewOrder(Order order)
         {
             try
             {
                 var collection = ConnectMongo<Order>(OrdersCollection);
-               return collection.InsertOneAsync(order);
+                return collection.InsertOneAsync(order);
             }
             catch (Exception ex)
             {
@@ -290,5 +337,6 @@ namespace swr_project.controllers
 
 
         }
-        }
+    }
+       
     }
