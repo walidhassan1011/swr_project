@@ -246,6 +246,21 @@ namespace swr_project.controllers
 
         }
 
+        public Vehicles FindVehicleById(string Id)
+        {
+            try
+            {
+                var collection = ConnectMongo<Vehicles>(VehiclesCollection);
+                var filter = Builders<Vehicles>.Filter.Eq("_id", Id);
+                return collection.Find(filter).FirstOrDefaultAsync().Result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
         public Task UpdateVehicle(Vehicles oldvVehicle)
         {
             try

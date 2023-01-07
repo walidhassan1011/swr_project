@@ -36,7 +36,7 @@ namespace swr_project
         
         private void button3_Click(object sender, EventArgs e)
         {
-            Orders ins = new Orders(newUser);
+            Choose ins = new Choose(newUser);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
@@ -77,10 +77,14 @@ namespace swr_project
                 }
                 else
                 {
-                    NewCustomer?.customerOrders?.Add(newOrder);
-                    newAdmin.editUser(NewCustomer);
+                    
                     newUser.addNewOrder(newOrder);
                     MessageBox.Show("Order added successfully");
+
+                    InvoiceForm ins = new InvoiceForm(orderBy,Order,newUser);
+                    ins.MdiParent = this.MdiParent;
+                    this.Hide();
+                    ins.ShowDialog();
                 }
                 
                     

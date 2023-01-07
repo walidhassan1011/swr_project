@@ -77,6 +77,12 @@ namespace swr_project.Models
             return EmployeeList;
             
         }
+
+        public Vehicles FindVehicleById(string id)
+        {
+            return db.FindVehicleById(id);
+        }
+
         public void deleteOrder(Order order) 
         {
             //We need to make the method of deleting in the database .
