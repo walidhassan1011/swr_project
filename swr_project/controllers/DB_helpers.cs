@@ -102,48 +102,48 @@ namespace swr_project.controllers
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("something wrong");
 
 
             }
         }
 
-        public void UpdateUser(User User)
+        public void UpdateUser(Customer User)
         {
             try
             {
 
-                var collection = ConnectMongo<User>(usersCollection);
-                var filter = Builders<User>.Filter.Eq("_id", User._id);
+                var collection = ConnectMongo<Customer>(usersCollection);
+                var filter = Builders<Customer>.Filter.Eq("_id", User._id);
                 collection.ReplaceOneAsync(filter, User, new ReplaceOptions { IsUpsert = true });
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("something wrong");
             }
         }
         public Customer FindUserById(string Id)
         {
-            
-                try
-                {
-                    var collection = ConnectMongo<Customer>(usersCollection);
-                    var filter = Builders<Customer>.Filter.Eq("_id", Id);
-                    return collection.Find(filter).FirstOrDefaultAsync().Result;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return null;
-                }
-            
+
+            try
+            {
+                var collection = ConnectMongo<Customer>(usersCollection);
+                var filter = Builders<Customer>.Filter.Eq("_id", Id);
+                return collection.Find(filter).FirstOrDefaultAsync().Result;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+
         }
-        public User FindUser(string name, string Password)
+        public Employee FindUser(string name, string Password)
         {
 
 
-            var collection = ConnectMongo<User>(usersCollection);
-            var filter = Builders<User>.Filter.Eq("firstName", name);
+            var collection = ConnectMongo<Employee>(usersCollection);
+            var filter = Builders<Employee>.Filter.Eq("firstName", name);
             var user = collection.Find(filter).FirstOrDefault();
             if (user == null)
             {
@@ -165,7 +165,7 @@ namespace swr_project.controllers
 
         }
 
-        public  List<Customer> GetAllUsers()
+        public List<Customer> GetAllUsers()
         {
             var collection = ConnectMongo<Customer>(usersCollection);
             var filter = Builders<Customer>.Filter.Eq("type", "Customer");
@@ -173,13 +173,13 @@ namespace swr_project.controllers
 
             return result;
         }
-        public List<User> GetAllEmployee()
+        public List<Employee> GetAllEmployee()
         {
-            var collection = ConnectMongo<User>(usersCollection);
+            var collection = ConnectMongo<Employee>(usersCollection);
 
             // filter with type = employee && type = admin
 
-            var filter = Builders<User>.Filter.Eq("type", "Employee") | Builders<User>.Filter.Eq("type", "Admin");
+            var filter = Builders<Employee>.Filter.Eq("type", "Employee") | Builders<Employee>.Filter.Eq("type", "Admin");
 
             var result = collection.Find(filter).ToList();
 
@@ -203,7 +203,7 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("something wrong");
             }
 
 
@@ -225,7 +225,7 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+
 
                 return null;
             }
@@ -241,6 +241,7 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
+
                 return null;
             }
 
@@ -256,7 +257,7 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+
                 return null;
             }
         }
@@ -271,6 +272,7 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
+
                 return null;
             }
 
@@ -278,17 +280,25 @@ namespace swr_project.controllers
 
         }
 
-        public void DeleteVehicle(Vehicles vehicle)
+        public void DeleteVehicle(string VehicleId)
         {
             try
             {
                 var collection = ConnectMongo<Vehicles>(VehiclesCollection);
-                var filter = Builders<Vehicles>.Filter.Eq("_id", vehicle._id);
-                collection.DeleteOneAsync(filter);
+                if(collection.DeleteOneAsync(c => c._id == VehicleId).Result.DeletedCount == 1)
+               
+                    {
+                        MessageBox.Show("deleted");
+                    }
+                else
+                    {
+                        MessageBox.Show("not found");
+                    }
+                
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("something wrong");
             }
 
 
@@ -319,7 +329,7 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+
                 return null;
             }
         }
@@ -330,9 +340,11 @@ namespace swr_project.controllers
             {
                 var collection = ConnectMongo<Order>(OrdersCollection);
                 return collection.InsertOneAsync(order);
+
             }
             catch (Exception ex)
             {
+
                 return null;
             }
         }
@@ -347,10 +359,49 @@ namespace swr_project.controllers
             }
             catch (Exception ex)
             {
+
                 return null;
             }
 
 
+        }
+
+        public Order FindOrderById(string Id)
+        {
+            try
+            {
+                var collection = ConnectMongo<Order>(OrdersCollection);
+                var filter = Builders<Order>.Filter.Eq("_id", Id);
+                return collection.Find(filter).FirstOrDefaultAsync().Result;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public void DeleteOrder(string OrderId)
+        {
+            try
+            {
+                var collection = ConnectMongo<Order>(OrdersCollection);
+               if (collection.DeleteOneAsync(c => c._id == OrderId).Result.DeletedCount == 1)
+                
+                    {
+                        MessageBox.Show("deleted");
+                    }
+                else
+                    {
+                        MessageBox.Show("not found");
+                    }
+                
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("something wrong");
+            }
         }
     }
        

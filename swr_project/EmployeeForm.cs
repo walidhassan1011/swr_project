@@ -13,18 +13,21 @@ namespace swr_project
 {
     public partial class EmployeeForm : Form
     {
-        public User newUser;
+        public Employee employee;
+        public Admin admin;
         string UserId;
         public EmployeeForm()
         {
             InitializeComponent();
         }
-        public EmployeeForm(User newUser)
+       
+        public EmployeeForm(Admin admin)
         {
             InitializeComponent();
-            this.newUser = newUser;
-            List<User> Employees = newUser.GetAllEmployees();
+            this.admin = admin;
+            List<Employee> Employees = admin.GetAllEmployees();
             dataGridView1.DataSource = Employees;
+            dataGridView1.ReadOnly = true;
         }
 
         private void Employee_Load(object sender, EventArgs e)
@@ -34,19 +37,20 @@ namespace swr_project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddingEmployee ins = new AddingEmployee(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            
+                AddingEmployee ins = new AddingEmployee(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             // deleteUser
 
-            Admin admin = new Admin();
             admin.removeUser(UserId);
-            Choose ins = new Choose(newUser);
+            Choose ins = new Choose(admin);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();
@@ -56,15 +60,22 @@ namespace swr_project
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Choose ins = new Choose(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            
+                Choose ins = new Choose(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
            UserId= dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -13,17 +13,17 @@ namespace swr_project
 {
     public partial class Person : Form
     {
-        public User newUser;
+        public Admin admin;
 
         public Person()
         {
             InitializeComponent();
         }
-           public Person(User newUserr)
+           public Person(Admin admin)
             {
                 InitializeComponent();
-                this.newUser = newUserr;
-            }
+            this.admin = admin;
+        }
         
         private void button2_Click(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace swr_project
             string Gender;
             string Type = "Customer";
             string DefaultPassword="1234";
-            List<Order> orders = new List<Order>();
+           
             bool Checked = Male.Checked;
             if (Checked)
             {
@@ -51,12 +51,12 @@ namespace swr_project
                Email.Text,
                     Type,
                     Gender,
-                    DefaultPassword,
-                    orders
+                    DefaultPassword
+                   
                 );
-            Admin newAdmin = new Admin();
+           
 
-            newAdmin.addUser(newCustomer);
+            admin.addUser(newCustomer);
 
 
         }
@@ -134,7 +134,7 @@ namespace swr_project
         private void button3_Click(object sender, EventArgs e)
         {
            
-            Customers ins = new Customers(newUser);
+            Customers ins = new Customers(admin);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using swr_project.controllers;
 using swr_project.Models;
-using swr_project.controllers;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.DataFormats;
 
@@ -60,7 +60,7 @@ namespace swr_project
 
         private void SignIn_Click(object sender, EventArgs e)
         {
-            User newUser = new User();
+            
 
 
             string UserName = userName.Text;
@@ -73,26 +73,45 @@ namespace swr_project
             {
                 
             }
-          newUser= db_helpers.FindUser(UserName, password);
+            Employee employee = db_helpers.FindUser(UserName, password);
             
 
-            if (newUser == null)
+            if (employee == null)
             {
                 MessageBox.Show("User Name or Password is incorrect");
             }
 
             else
             {
+                if (employee.type == "Admin" || employee.type == "admin")
+                {
+                    // casting the type of the employee to the admin
+
+                    Employee admin = new Admin();
+                    Admin admin1 = (Admin)admin;
+                    TYPE = admin1.type;
+                    
+                    MessageBox.Show("Welcome " + admin1.type);
+                    Choose ins = new Choose(admin1);
+                    ins.MdiParent = this.MdiParent;
+                    this.Hide();
+
+                    ins.ShowDialog();
+
+                }
+               else {
+
+                    TYPE = employee.type;
+                    MessageBox.Show("Welcome " + employee.type);
+                    Choose ins = new Choose(employee);
+                    ins.MdiParent = this.MdiParent;
+                    this.Hide();
+
+                    ins.ShowDialog();
+                }
 
 
 
-                TYPE = newUser.type;
-                MessageBox.Show("Welcome " + newUser.type);
-                Choose ins = new Choose(newUser);
-                ins.MdiParent = this.MdiParent;
-                this.Hide();
-
-                ins.ShowDialog();
             }
 
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace swr_project.Models
 {
-    public class Admin:User
+    public class Admin:Employee
     {
         DB_helpers db = new DB_helpers();
 
@@ -25,10 +25,7 @@ namespace swr_project.Models
         {
             db.AddNewUser(user);
         }
-        public void editUser( User user)
-        {
-            db.UpdateUser( user);
-        }
+       
         public void removeUser(string Id)
         {
             db.DeleteUser(Id);

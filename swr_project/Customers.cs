@@ -14,7 +14,8 @@ namespace swr_project
 {
     public partial class Customers : Form
     {
-        public User newUser;
+        public Employee employee;
+        public Admin admin;
         public string UserId;
         public Customers()
         {
@@ -22,34 +23,24 @@ namespace swr_project
             
         }
 
-        public Customers(User newUser)
+        public Customers(Employee employee)
         {
             InitializeComponent();
-            this.newUser = newUser;
-            List<Customer> listOfUser = newUser.viewAllUsers();
-            dataGridView1.DataSource = listOfUser;
+            this.employee = employee;
+            List<Customer> listOfCustomers = employee.viewAllUsers();
+            dataGridView1.DataSource = listOfCustomers;
+            //remove button
+            button3.Visible = false;
+            //add button
+            button1.Visible = false;
+        }
 
-            if (newUser.type == "Admin" || newUser.type == "admin")
-            {
-                
-                button3.Visible = true;
-                button1.Visible = true;
-            }
-            else
-            {
-                
-                //remove button
-                button3.Visible = false;
-                //add button
-                button1.Visible = false;
-            }
-
-
-
-
-
-
-
+        public Customers(Admin admin)
+        {
+            InitializeComponent();
+            this.admin = admin;
+            List<Customer> listOfCustomers = admin.viewAllUsers();
+            dataGridView1.DataSource = listOfCustomers;
         }
 
 
@@ -58,10 +49,14 @@ namespace swr_project
         {
 
            
-            Person ins = new Person(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+                
+            
+            
+                Person ins = new Person(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -84,10 +79,21 @@ namespace swr_project
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Choose ins = new Choose(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            if (employee != null)
+            {
+                Choose ins = new Choose(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            else if (admin != null)
+            {
+                Choose ins = new Choose(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+                
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -97,9 +103,10 @@ namespace swr_project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Admin admin = new Admin();
+
+            
             admin.removeUser(UserId);
-            Choose ins = new Choose(newUser);
+            Choose ins = new Choose(admin);
             ins.MdiParent = this.MdiParent;
             this.Hide();
             ins.ShowDialog();

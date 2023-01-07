@@ -13,16 +13,18 @@ namespace swr_project.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
-        public string orderBy { get; set; }
+      
 
-        public string order { get; set; }
+        public Customer orderBy { get; set; }
+        public Vehicles order { get; set; }
         public DateTime createdAt { get; set; }
 
         
-        public Order(String orderBy,string order)
+        public Order(Vehicles order,Customer orderBy)
         {
             this.orderBy = orderBy;
             this.order=order;
+           
             this.createdAt = DateTime.Now;
         }
 

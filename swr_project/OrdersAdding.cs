@@ -13,22 +13,37 @@ namespace swr_project
 {
     public partial class OrdersAdding : Form
     {
-        public User newUser;
-        public string Order;
+        public Employee employee;
+        public Admin admin;
+        public string order;
         public string orderBy;
         public OrdersAdding()
         {
             InitializeComponent();
         }
-        public OrdersAdding (User newUser)
+
+        public OrdersAdding(Admin admin)
+        {
+            InitializeComponent();
+            this.admin = admin;
+            List<Customer> customers = admin.viewAllUsers();
+            List<Vehicles> Vehicles = admin.viewAllVehicles();
+            OrderBydataGrid.DataSource = customers;
+            OrderDataGrid.DataSource = Vehicles;
+
+        }
+
+        public OrdersAdding (Employee employee)
         
             {
                 InitializeComponent();
-                this.newUser = newUser;
-            List<Customer> customers=newUser.viewAllUsers();
-            List<Vehicles> Vehicles = newUser.viewAllVehicles();
+            this.employee = employee;
+            List<Customer> customers=employee.viewAllUsers();
+            List<Vehicles> Vehicles = employee.viewAllVehicles();
             OrderBydataGrid.DataSource = customers;
             OrderDataGrid.DataSource = Vehicles;
+            OrderBydataGrid.ReadOnly = true;
+            OrderDataGrid.ReadOnly = true;
         
 
 
@@ -36,10 +51,20 @@ namespace swr_project
         
         private void button3_Click(object sender, EventArgs e)
         {
-            Choose ins = new Choose(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            if (employee != null)
+            {
+                Choose ins = new Choose(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            else if (admin != null)
+            {
+                Choose ins = new Choose(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -54,41 +79,28 @@ namespace swr_project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Order newOrder = new Order(
-                Order,
-                orderBy
-                );
-           if(
-                Order == "" ||
-                orderBy == ""
-                )
+            if (employee != null)
             {
-                MessageBox.Show("Please fill all the fields");
+                Customer customer = employee.FinUserById(orderBy);
+                Vehicles vehicle = employee.FindVehicleById(order);
+                Order newOrder = new Order(vehicle, customer);
+                employee.addNewOrder(newOrder);
+                customer.customersOrders.Add(vehicle);
+                employee.editUser(customer);
+                MessageBox.Show("order added ");
+
+
             }
             else
             {
-                Admin newAdmin = new Admin();
-                Customer NewCustomer = newUser.FinUserById(orderBy);
-                if (NewCustomer == null)
-                {
-                    
+                Customer customer = admin.FinUserById(orderBy);
+                Vehicles vehicle = admin.FindVehicleById(order);
+                Order newOrder = new Order(vehicle, customer);
+                admin.addNewOrder(newOrder);
+                customer.customersOrders.Add(vehicle);
+                admin.editUser(customer);
+                MessageBox.Show("order added ");
 
-                    MessageBox.Show("Please enter a valid customer ID");
-                }
-                else
-                {
-                    
-                    newUser.addNewOrder(newOrder);
-                    MessageBox.Show("Order added successfully");
-
-                    InvoiceForm ins = new InvoiceForm(orderBy,Order,newUser);
-                    ins.MdiParent = this.MdiParent;
-                    this.Hide();
-                    ins.ShowDialog();
-                }
-                
-                    
-               
             }
         }
 
@@ -118,7 +130,7 @@ namespace swr_project
         {
             // put the selected row data into Vehicles object
 
-            Order = OrderDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+            order = OrderDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
             
             

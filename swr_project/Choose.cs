@@ -15,26 +15,35 @@ namespace swr_project
 {
     public partial class Choose : Form
     {
-        public User newUser;
+        public Employee employee;
+        public Admin admin;
         public Choose()
         {
             InitializeComponent();
         }
-        public Choose(User newUser)
+        public Choose(Employee employee)
         {
             InitializeComponent();
-            this.newUser = newUser;
-            if (newUser.type == "Admin"||newUser.type=="admin")
-            {
-                button4.Visible = true;
+            this.employee = employee;
+            
+             
 
-            }
-            else
-            {
+            
+            
                 button4.Visible = false;
                 
                 
-           }
+          
+        }
+        public Choose(Admin admin)
+        {
+            InitializeComponent();
+            this.admin = admin;
+            
+                button4.Visible = true;
+
+            
+           
         }
         private void Choose_Load(object sender, EventArgs e)
         {
@@ -43,35 +52,69 @@ namespace swr_project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Products ins = new Products (newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            if (employee != null)
+            {
+                Products ins = new Products(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            else if (admin != null)
+            {
+                Products ins = new Products(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Orders ins = new Orders(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            if (employee != null)
+            {
+                Orders ins = new Orders(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            else if (admin != null)
+            {
+                Orders ins = new Orders(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Customers ins = new Customers(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            if (employee != null)
+            {
+                Customers ins = new Customers(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            else if (admin != null)
+            {
+                Customers ins = new Customers(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            EmployeeForm ins = new EmployeeForm(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            if (admin != null)
+            {
+                EmployeeForm ins = new EmployeeForm(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            
         }
     }
 }

@@ -24,7 +24,7 @@ namespace swr_project.Models
         {
             db.UpdateVehicle(vehicleOld);//We need to modify the method in the database to take the new vehicle too.
         }
-        public void removeCar(Car car)
+        public void removeCar(string car)
         {
             db.DeleteVehicle(car);
         }

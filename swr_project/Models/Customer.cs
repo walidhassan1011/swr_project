@@ -9,11 +9,21 @@ namespace swr_project.Models
 {
    public class Customer:User
     {
-        public List<Order>? customerOrders { get; set; }
-        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password, List<Order> customerOrders)
+        // list of orders
+
+        public List<Vehicles> customersOrders { get; set; } =  new List<Vehicles>();
+        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password, Vehicles customerOrder)
            : base( firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
         {
-            this.customerOrders = customerOrders;
+            
+            this.customersOrders.Add(customerOrder);
+
+        }
+        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password)
+          : base(firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
+        {
+            
+
         }
         public Customer()
         {

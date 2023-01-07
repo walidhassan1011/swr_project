@@ -15,18 +15,24 @@ namespace swr_project
     public partial class VehiclesAdding : Form
     {
         DB_helpers db = new DB_helpers();
-        public User newUser;
+        public Employee employee;
+        public Admin admin;
 
         public VehiclesAdding()
         {
             InitializeComponent();
         }
-        public VehiclesAdding (User newUser)
+        public VehiclesAdding(Admin admin)
+        {
+            InitializeComponent();
+            this.admin = admin;
+        }
+        public VehiclesAdding (Employee employee)
         {
             
                 InitializeComponent();
-                this.newUser = newUser;
-            
+            this.employee = employee;
+
         }
         private void label5_Click(object sender, EventArgs e)
         {
@@ -35,10 +41,20 @@ namespace swr_project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Products ins = new Products(newUser);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+            if (employee != null)
+            {
+                Products ins = new Products(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            else if (admin != null)
+            {
+                Products ins = new Products(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -78,11 +94,22 @@ namespace swr_project
                     }
                     else {
                         MessageBox.Show("Car added successfully");
-                        Choose ins = new Choose(newUser);
-                        ins.MdiParent = this.MdiParent;
-                        this.Hide();
+                        if (employee != null)
+                        {
+                            Choose ins = new Choose(employee);
+                            ins.MdiParent = this.MdiParent;
+                            this.Hide();
 
-                        ins.ShowDialog();
+                            ins.ShowDialog();
+                        }
+                        else if (admin != null)
+                        {
+                            Choose ins = new Choose(admin);
+                            ins.MdiParent = this.MdiParent;
+                            this.Hide();
+
+                            ins.ShowDialog();
+                        }
                     }
                 }
                 else
@@ -102,11 +129,22 @@ namespace swr_project
                     else { 
                     MessageBox.Show("Bike added successfully");
 
-                        Choose ins = new Choose(newUser);
-                        ins.MdiParent = this.MdiParent;
-                        this.Hide();
+                        if (employee != null)
+                        {
+                            Choose ins = new Choose(employee);
+                            ins.MdiParent = this.MdiParent;
+                            this.Hide();
 
-                        ins.ShowDialog();
+                            ins.ShowDialog();
+                        }
+                        else if (admin != null)
+                        {
+                            Choose ins = new Choose(admin);
+                            ins.MdiParent = this.MdiParent;
+                            this.Hide();
+
+                            ins.ShowDialog();
+                        }
 
                     }
             }

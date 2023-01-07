@@ -13,20 +13,21 @@ namespace swr_project
 {
     public partial class InvoiceForm : Form
     {
-        public User newUser;
+        public Employee employee;
+        public Admin admin;
         public Order newOrder;
         public InvoiceForm()
         {
             InitializeComponent();
         }
-        public InvoiceForm(string orderById,string orderId,User newUser)
+        public InvoiceForm(string orderById,string orderId,Employee employee)
         {
             InitializeComponent();
 
-            this.newUser = newUser;
-            
-            Customer newCustomer = newUser.FinUserById(orderById);
-            Vehicles newVehicle = newUser.FindVehicleById(orderId);
+            this.employee = employee;
+
+            Customer newCustomer = employee.FinUserById(orderById);
+            Vehicles newVehicle = employee.FindVehicleById(orderId);
             orderBy.Text = newCustomer.firstName;
             order.Text = newVehicle.Model;
             price.Text = newVehicle.price.ToString();
@@ -34,6 +35,26 @@ namespace swr_project
             serial_Number.Text = newVehicle.serialNumber;
             
             
+
+
+
+
+        }
+        public InvoiceForm(string orderById, string orderId, Admin admin)
+        {
+            InitializeComponent();
+
+            this.admin = admin;
+
+            Customer newCustomer = admin.FinUserById(orderById);
+            Vehicles newVehicle = admin.FindVehicleById(orderId);
+            orderBy.Text = newCustomer.firstName;
+            order.Text = newVehicle.Model;
+            price.Text = newVehicle.price.ToString();
+            Type.Text = newVehicle.Type;
+            serial_Number.Text = newVehicle.serialNumber;
+
+
 
 
 

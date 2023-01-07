@@ -13,16 +13,16 @@ namespace swr_project
 {
     public partial class AddingEmployee : Form
     {
-        public User newUser;
+        public Admin admin;
         public AddingEmployee()
         {
             InitializeComponent();
         }
-        public AddingEmployee(User newUser)
+        public AddingEmployee(Admin admin)
         {
 
             InitializeComponent();
-            this.newUser = newUser;
+            this.admin = admin;
 
         }
 
@@ -66,7 +66,7 @@ namespace swr_project
                      );
                 newAdmin.addUser(newAdmin);
                 MessageBox.Show("Admin Added");
-                EmployeeForm ins = new EmployeeForm(newUser);
+                EmployeeForm ins = new EmployeeForm(admin);
                 ins.MdiParent = this.MdiParent;
                 this.Hide();
                 ins.ShowDialog();
@@ -94,7 +94,7 @@ namespace swr_project
 
                 MessageBox.Show("employee Added");
 
-                EmployeeForm ins = new EmployeeForm(newUser);
+                EmployeeForm ins = new EmployeeForm(admin);
                 ins.MdiParent = this.MdiParent;
                 this.Hide();
                 ins.ShowDialog();
