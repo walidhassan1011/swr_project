@@ -16,11 +16,12 @@ namespace swr_project
         public Employee employee;
         public Admin admin;
         public Order newOrder;
+       
         public InvoiceForm()
         {
             InitializeComponent();
         }
-        public InvoiceForm(string orderById,string orderId,Employee employee)
+        public InvoiceForm(string orderById,string orderId,string theOrderId,Employee employee)
         {
             InitializeComponent();
 
@@ -28,13 +29,16 @@ namespace swr_project
 
             Customer newCustomer = employee.FinUserById(orderById);
             Vehicles newVehicle = employee.FindVehicleById(orderId);
+            Invoice newInvoice = new Invoice(newVehicle.price, newVehicle.Model, newCustomer);
+            newInvoice.addNewInvoice(newInvoice);
             orderBy.Text = newCustomer.firstName;
             order.Text = newVehicle.Model;
             price.Text = newVehicle.price.ToString();
             Type.Text = newVehicle.Type;
             serial_Number.Text = newVehicle.serialNumber;
-            
-            
+            order_Id.Text = theOrderId;
+            date.Text = DateTime.Now.ToString("M/d/yyyy");
+
 
 
 
@@ -48,6 +52,8 @@ namespace swr_project
 
             Customer newCustomer = admin.FinUserById(orderById);
             Vehicles newVehicle = admin.FindVehicleById(orderId);
+            Invoice newInvoice = new Invoice(newVehicle.price, newVehicle.Model, newCustomer);
+            newInvoice.addNewInvoice(newInvoice);
             orderBy.Text = newCustomer.firstName;
             order.Text = newVehicle.Model;
             price.Text = newVehicle.price.ToString();

@@ -34,7 +34,7 @@ namespace swr_project
         private void button2_Click(object sender, EventArgs e)
         {
             string Type = comboBox1.Text;
-            MessageBox.Show(Type);
+            
             string Gender;
             string DefaultPassword = "1234";
             string FullName = Firstname.Text + " " + LastName.Text;
@@ -58,7 +58,7 @@ namespace swr_project
                     LastName.Text,
                     FullName,
                     Address.Text,
-                    Convert.ToInt32(PhoneNumber.Text),
+                    PhoneNumber.Text,
                     Email.Text,
                     Type,
                     Gender,
@@ -85,7 +85,7 @@ namespace swr_project
                     LastName.Text,
                     FullName,
                     Address.Text,
-                    Convert.ToInt32(PhoneNumber.Text),
+                    PhoneNumber.Text,
                     Email.Text,
                     Type,
                     Gender,

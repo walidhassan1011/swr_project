@@ -12,14 +12,14 @@ namespace swr_project.Models
         // list of orders
 
         public List<Vehicles> customersOrders { get; set; } =  new List<Vehicles>();
-        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password, Vehicles customerOrder)
+        public Customer(string firstName, string lastName, string fullName, string adress, string phoneNumber, string email, string type, string gender, string password, Vehicles customerOrder)
            : base( firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
         {
             
             this.customersOrders.Add(customerOrder);
 
         }
-        public Customer(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password)
+        public Customer(string firstName, string lastName, string fullName, string adress, string phoneNumber, string email, string type, string gender, string password)
           : base(firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
         {
             

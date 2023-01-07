@@ -20,7 +20,7 @@ namespace swr_project.Models
         public string Model { get; set; }
         public string brand { get; set; }
        
-        public DateTime TimeStamp { get; set; }
+        public string TimeStamp { get; set; }
         public string Type { get; set; }
         public double price { get; set; }
         public string Engine_Number { get; set; }
@@ -31,7 +31,7 @@ namespace swr_project.Models
             Model = model;
             this.brand = brand;
             this.Type = type;
-            this.TimeStamp = DateTime.Now;
+            this.TimeStamp = DateTime.Now.ToString("M/d/yyyy");
             this.price = price;
             Engine_Number = engine_Number;
             this.serialNumber = serialNumber;

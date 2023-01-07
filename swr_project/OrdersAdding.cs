@@ -88,7 +88,10 @@ namespace swr_project
                 customer.customersOrders.Add(vehicle);
                 employee.editUser(customer);
                 MessageBox.Show("order added ");
-
+                InvoiceForm ins = new InvoiceForm(orderBy,order,newOrder._id,employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
 
             }
             else
@@ -100,6 +103,11 @@ namespace swr_project
                 customer.customersOrders.Add(vehicle);
                 admin.editUser(customer);
                 MessageBox.Show("order added ");
+                InvoiceForm ins = new InvoiceForm(orderBy, order, newOrder._id, admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+
 
             }
         }

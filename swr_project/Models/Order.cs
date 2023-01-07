@@ -17,15 +17,15 @@ namespace swr_project.Models
 
         public Customer orderBy { get; set; }
         public Vehicles order { get; set; }
-        public DateTime createdAt { get; set; }
+        public string createdAt { get; set; }
 
         
         public Order(Vehicles order,Customer orderBy)
         {
             this.orderBy = orderBy;
             this.order=order;
-           
-            this.createdAt = DateTime.Now;
+
+            this.createdAt = DateTime.Now.ToString("M/d/yyyy");
         }
 
         public Order()

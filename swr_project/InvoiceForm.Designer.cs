@@ -45,6 +45,11 @@
             this.price = new System.Windows.Forms.Label();
             this.serial_Number = new System.Windows.Forms.Label();
             this.order_Id = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.date = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +123,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(57, 87);
+            this.label6.Location = new System.Drawing.Point(12, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(214, 40);
             this.label6.TabIndex = 61;
@@ -229,12 +234,48 @@
             this.order_Id.Size = new System.Drawing.Size(0, 22);
             this.order_Id.TabIndex = 71;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(551, 370);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(81, 20);
+            this.label11.TabIndex = 72;
+            this.label11.Text = "Signature";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label12.Location = new System.Drawing.Point(433, 406);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(318, 22);
+            this.label12.TabIndex = 73;
+            this.label12.Text = "____________________________";
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // date
+            // 
+            this.date.AutoSize = true;
+            this.date.Location = new System.Drawing.Point(253, 119);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(0, 20);
+            this.date.TabIndex = 74;
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.date);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.order_Id);
             this.Controls.Add(this.serial_Number);
             this.Controls.Add(this.price);
@@ -281,5 +322,10 @@
         private Label price;
         private Label serial_Number;
         private Label order_Id;
+        private Label label11;
+        private Label label12;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private PrintDialog printDialog1;
+        private Label date;
     }
 }

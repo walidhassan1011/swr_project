@@ -46,7 +46,7 @@
             this.pictureBox1.Image = global::swr_project.Properties.Resources.backGround;
             this.pictureBox1.Location = new System.Drawing.Point(492, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(304, 344);
+            this.pictureBox1.Size = new System.Drawing.Size(323, 344);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -58,7 +58,7 @@
             this.button1.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.button1.Location = new System.Drawing.Point(492, 362);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 39);
+            this.button1.Size = new System.Drawing.Size(159, 39);
             this.button1.TabIndex = 10;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = false;
@@ -69,9 +69,9 @@
             this.button3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button3.Font = new System.Drawing.Font("Franklin Gothic Demi", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.button3.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.button3.Location = new System.Drawing.Point(647, 362);
+            this.button3.Location = new System.Drawing.Point(657, 362);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(149, 39);
+            this.button3.Size = new System.Drawing.Size(158, 39);
             this.button3.TabIndex = 12;
             this.button3.Text = "Remove";
             this.button3.UseVisualStyleBackColor = false;
@@ -84,7 +84,7 @@
             this.button4.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.button4.Location = new System.Drawing.Point(492, 407);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(304, 39);
+            this.button4.Size = new System.Drawing.Size(323, 39);
             this.button4.TabIndex = 14;
             this.button4.Text = "Back";
             this.button4.UseVisualStyleBackColor = false;

@@ -19,12 +19,21 @@ namespace swr_project.Models
         public int _id { get; set; }
         
         
-        public float product_price { get; set; }
+        public double product_price { get; set; }
 
         public string product_name { get; set; }
 
-        public Customer invoice_name { get; set; }
+        public Customer customerDetails { get; set; }
 
+        public string createdAt { get; set; }
+
+        public Invoice(double product_price, string product_name, Customer customerDetails)
+        {
+            this.product_price = product_price;
+            this.product_name = product_name;
+            this.customerDetails = customerDetails;
+            this.createdAt = DateTime.Now.ToString("M/d/yyyy");
+        }
         public void addNewInvoice(Invoice invoice)
         {
             db.AddNewInvoice(invoice);

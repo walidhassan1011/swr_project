@@ -47,7 +47,7 @@ namespace swr_project
                 LastName.Text,
                 FullName,
                 Address.Text,
-               Convert.ToInt32(PhoneNumber.Text),
+               PhoneNumber.Text,
                Email.Text,
                     Type,
                     Gender,
@@ -57,6 +57,11 @@ namespace swr_project
            
 
             admin.addUser(newCustomer);
+            MessageBox.Show("Customer Added Successfully");
+            Customers ins = new Customers(admin);
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
 
 
         }

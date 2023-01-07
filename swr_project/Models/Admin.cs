@@ -11,7 +11,7 @@ namespace swr_project.Models
     {
         DB_helpers db = new DB_helpers();
 
-        public Admin(string firstName, string lastName, string fullName, string adress, int phoneNumber, string email, string type, string gender, string password)
+        public Admin(string firstName, string lastName, string fullName, string adress, string phoneNumber, string email, string type, string gender, string password)
            : base( firstName, lastName, fullName, adress, phoneNumber, email, type, gender, password)
         {
 
