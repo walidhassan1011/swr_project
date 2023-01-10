@@ -41,28 +41,38 @@ namespace swr_project
             {
                 Gender = "Female";
             }
-            Customer newCustomer = new Customer(
+            if (Firstname.Text == "" || LastName.Text == "" || FullName == "" || Address.Text == "" || PhoneNumber.Text ==""|| Email.Text==""|| Type=="" || Gender==""||DefaultPassword=="")
+            {
+                
 
-                Firstname.Text,
-                LastName.Text,
-                FullName,
-                Address.Text,
-               PhoneNumber.Text,
-               Email.Text,
-                    Type,
-                    Gender,
-                    DefaultPassword
-                   
-                );
-           
+                MessageBox.Show("Please Fill All Fields");
+            }
+            else
+            {
 
-            admin.addUser(newCustomer);
-            MessageBox.Show("Customer Added Successfully");
-            Customers ins = new Customers(admin);
-            ins.MdiParent = this.MdiParent;
-            this.Hide();
-            ins.ShowDialog();
+                Customer newCustomer = new Customer(
 
+               Firstname.Text,
+               LastName.Text,
+               FullName,
+               Address.Text,
+              PhoneNumber.Text,
+              Email.Text,
+                   Type,
+                   Gender,
+                   DefaultPassword
+
+               );
+
+
+                admin.addUser(newCustomer);
+                MessageBox.Show("Customer Added Successfully");
+                Customers ins = new Customers(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+
+            }
 
         }
 

@@ -16,7 +16,7 @@ namespace swr_project.Models
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int _id { get; set; }
+        public string _id { get; set; }
         
         
         public double product_price { get; set; }

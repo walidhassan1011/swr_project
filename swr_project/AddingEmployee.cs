@@ -47,23 +47,31 @@ namespace swr_project
             {
                 Gender = "Female";
             }
-            if (Type == "Admin")
-            {
-
+            
                 // add new admin
-               
-               
+
+
+                if (Firstname.Text == "" || LastName.Text == "" || Email.Text == "" || PhoneNumber.Text == "" || Address.Text == ""|| Gender =="")
+                {
+
+                MessageBox.Show("Please Fill All Fields");
+
+
+            }
+                else
+
+                {  
                 Admin newAdmin = new Admin(
-                    Firstname.Text,
-                    LastName.Text,
-                    FullName,
-                    Address.Text,
-                    PhoneNumber.Text,
-                    Email.Text,
-                    Type,
-                    Gender,
-                    DefaultPassword
-                     );
+                      Firstname.Text,
+                      LastName.Text,
+                      FullName,
+                      Address.Text,
+                      PhoneNumber.Text,
+                      Email.Text,
+                      Type,
+                      Gender,
+                      DefaultPassword
+                       );
                 newAdmin.addUser(newAdmin);
                 MessageBox.Show("Admin Added");
                 EmployeeForm ins = new EmployeeForm(admin);
@@ -72,33 +80,16 @@ namespace swr_project
                 ins.ShowDialog();
 
 
-
             }
-            else
-            {
-              
-                
-                Admin newAdmin = new Admin();
-                // add new employee
-                Employee newEmployee = new Employee(
-                    Firstname.Text,
-                    LastName.Text,
-                    FullName,
-                    Address.Text,
-                    PhoneNumber.Text,
-                    Email.Text,
-                    Type,
-                    Gender,
-                    DefaultPassword);
-                newAdmin.addUser(newEmployee);
+            
+        }
 
-                MessageBox.Show("employee Added");
-
-                EmployeeForm ins = new EmployeeForm(admin);
-                ins.MdiParent = this.MdiParent;
-                this.Hide();
-                ins.ShowDialog();
-            }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EmployeeForm ins = new EmployeeForm(admin);
+            ins.MdiParent = this.MdiParent;
+            this.Hide();
+            ins.ShowDialog();
         }
     }
 }

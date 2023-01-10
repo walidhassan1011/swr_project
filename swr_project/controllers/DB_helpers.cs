@@ -138,12 +138,12 @@ namespace swr_project.controllers
             }
 
         }
-        public Employee FindUser(string name, string Password)
+        public Admin FindUser(string name, string Password)
         {
 
 
-            var collection = ConnectMongo<Employee>(usersCollection);
-            var filter = Builders<Employee>.Filter.Eq("firstName", name);
+            var collection = ConnectMongo<Admin>(usersCollection);
+            var filter = Builders<Admin>.Filter.Eq("firstName", name);
             var user = collection.Find(filter).FirstOrDefault();
             if (user == null)
             {
@@ -151,7 +151,14 @@ namespace swr_project.controllers
             }
             else
             {
-
+                if (user.type == "customer"|| user.type=="Customer")
+                {
+                    MessageBox.Show("Not allowed To Login");
+                    return null;
+                }
+                else
+                {
+                    
                 if (BCrypt.Net.BCrypt.Verify(Password, user.Password))
                 {
                     return user;
@@ -159,6 +166,7 @@ namespace swr_project.controllers
                 else
                 {
                     return null;
+                }
                 }
             }
 
@@ -179,7 +187,7 @@ namespace swr_project.controllers
 
             // filter with type = employee && type = admin
 
-            var filter = Builders<Employee>.Filter.Eq("type", "Employee") | Builders<Employee>.Filter.Eq("type", "Admin");
+            var filter = Builders<Employee>.Filter.Eq("type", "Employee") | Builders<Employee>.Filter.Eq("type", "Admin") | Builders<Employee>.Filter.Eq("type", "admin") | Builders<Employee>.Filter.Eq("type", "employee");
 
             var result = collection.Find(filter).ToList();
 

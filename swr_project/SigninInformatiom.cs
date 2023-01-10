@@ -73,7 +73,7 @@ namespace swr_project
             {
                 
             }
-            Employee employee = db_helpers.FindUser(UserName, password);
+            Admin employee = db_helpers.FindUser(UserName, password);
             
 
             if (employee == null)
@@ -83,16 +83,15 @@ namespace swr_project
 
             else
             {
-                if (employee.type == "Admin" || employee.type == "admin")
+                if (employee.type == "employee" || employee.type == "Employee")
                 {
                     // casting the type of the employee to the admin
 
-                    Employee admin = new Admin();
-                    Admin admin1 = (Admin)admin;
-                    TYPE = admin1.type;
-                    
-                    MessageBox.Show("Welcome " + admin1.type);
-                    Choose ins = new Choose(admin1);
+
+                    Employee employee1 = (Employee)employee;
+
+                    MessageBox.Show("Welcome " + employee1.firstName);
+                    Choose ins = new Choose(employee1);
                     ins.MdiParent = this.MdiParent;
                     this.Hide();
 
@@ -100,10 +99,13 @@ namespace swr_project
 
                 }
                else {
+                    Admin admin = new Admin();
 
-                    TYPE = employee.type;
-                    MessageBox.Show("Welcome " + employee.type);
-                    Choose ins = new Choose(employee);
+                    admin = employee;
+
+                    
+                    MessageBox.Show("Welcome " + admin.firstName);
+                    Choose ins = new Choose(admin);
                     ins.MdiParent = this.MdiParent;
                     this.Hide();
 

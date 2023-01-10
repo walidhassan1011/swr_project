@@ -44,7 +44,7 @@ namespace swr_project
 
 
         }
-        public InvoiceForm(string orderById, string orderId, Admin admin)
+        public InvoiceForm(string orderById, string orderId,  string theOrderId, Admin admin)
         {
             InitializeComponent();
 
@@ -59,7 +59,8 @@ namespace swr_project
             price.Text = newVehicle.price.ToString();
             Type.Text = newVehicle.Type;
             serial_Number.Text = newVehicle.serialNumber;
-
+            order_Id.Text = theOrderId;
+            date.Text = DateTime.Now.ToString("M/d/yyyy");
 
 
 
