@@ -1,4 +1,5 @@
 ﻿using swr_project.Models;
+using System.Drawing.Printing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,6 +82,39 @@ namespace swr_project
         private void InvoiceForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (employee != null)
+            {
+                Choose ins = new Choose(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            else
+            {
+                Choose ins = new Choose(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+        }
+        Bitmap memoryImage;
+        private void PrintDocument1_PrintPage(System.Object sender,
+        System.Drawing.Printing.PrintPageEventArgs e) =>
+            e.Graphics.DrawImage(memoryImage, 0, 0);
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Graphics myGraphics = this.CreateGraphics();
+            Size s = this.Size;
+            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
+
+            printDocument1.Print();
         }
     }
 }
