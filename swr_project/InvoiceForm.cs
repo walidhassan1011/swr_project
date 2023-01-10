@@ -86,6 +86,25 @@ namespace swr_project
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+           
+        }
+        Bitmap memoryImage;
+        private void PrintDocument1_PrintPage(System.Object sender,
+        System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+            Bitmap bmp = new Bitmap(this.groupBox1.Width, this.groupBox1.Height);
+            this.groupBox1.DrawToBitmap(bmp, new Rectangle(0, 0, this.groupBox1.Width, this.groupBox1.Height));
+            e.Graphics.DrawImage((Image)bmp, x, y);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
             if (employee != null)
             {
                 Choose ins = new Choose(employee);
@@ -100,21 +119,20 @@ namespace swr_project
                 this.Hide();
                 ins.ShowDialog();
             }
+
         }
-        Bitmap memoryImage;
-        private void PrintDocument1_PrintPage(System.Object sender,
-        System.Drawing.Printing.PrintPageEventArgs e) =>
-            e.Graphics.DrawImage(memoryImage, 0, 0);
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBox2_Click_1(object sender, EventArgs e)
         {
-            Graphics myGraphics = this.CreateGraphics();
-            Size s = this.Size;
-            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
-            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
 
-            printDocument1.Print();
+            PrintDocument doc = new PrintDocument();
+            doc.PrintPage += this.PrintDocument1_PrintPage;
+            PrintDialog dlgSettings = new PrintDialog();
+            dlgSettings.Document = doc;
+            if (dlgSettings.ShowDialog() == DialogResult.OK)
+            {
+                doc.Print();
+            }
         }
     }
 }

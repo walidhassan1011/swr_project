@@ -105,11 +105,23 @@ namespace swr_project
             if(employee != null && dataGridView1.CurrentRow.Cells[0].Value.ToString()!=null)
             {
                 employee.deleteOrder(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+               
+                Choose ins = new Choose(employee);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
             }
+
             else if (admin != null && dataGridView1.CurrentRow.Cells[0].Value.ToString() != null)
             {
                     admin.deleteOrder(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                }
+                
+                Choose ins = new Choose(admin);
+                ins.MdiParent = this.MdiParent;
+                this.Hide();
+                ins.ShowDialog();
+            }
+            
             else
             {
                 
